@@ -1,40 +1,27 @@
 #include<stdio.h>
-void main()
-{
-  int temp,i,j,limit,pass,t;t++;
-  int arr[30];
-  
-  printf("enter the number of elements:");
-  scanf("%d",&limit);
-  t++;t++;
-
-  printf("enter the elemnts");
-  t++;
-  for( i=0;i<limit;i++){
-    scanf("%d",&arr[i]);
-    t++;t++;
-  }
-
-  for(pass=0;pass<limit-1;pass++){
-    for(j=0;j<limit-pass-1;j++){
-
-      if(arr[j]>arr[j+1]){
-        temp=arr[j];
-        arr[j]=arr[j+1];
-        arr[j+1]=temp;
-      }
+int main(){
+    int n,i,j,a[100],temp;
+    printf("Enter the size of array");
+    scanf("%d",&n);
+    printf("Enter the elements");
+    for(i=0;i<n;i++){
+        scanf("%d",&a[i]);
     }
-  }
-  t++;t++;
-  printf("the sorted array is");
-  t++;
-  for(i=0;i<limit;i++){
-    printf(" %d ",arr[i]);
-    t++;t++;
-  }
-  printf("Time complexity=%d\n",t);
-  printf("Space complexity=%d\n",(4*7)+limit);
+    printf("Original array is\t");
+    for(i=0;i<n;i++){
+        printf("%d\t",a[i]);
+    }
+    for(i=0;i<n;i++){
+        for(j=0;j<n-i-1;j++){
+            if(a[j]>a[j+1]){
+                temp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=temp;
+            }
+        }
+    }
+      printf("\nThe sorted array is\t");
+    for(i=0;i<n;i++){
+        printf("%d\t",a[i]);
+    }
 }
-
-	
-
