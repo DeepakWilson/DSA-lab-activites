@@ -1,77 +1,50 @@
 #include<stdio.h>
-int A[100],n,i;
-int item,opt;
-int front=-1;
-int rear=-1;
-void ENQUEUE();
-void DEQUEQUE();
-void DISPLAY();
-void ENQUEUE(){
-        if(front==(rear+1)%n)
-        {
-            printf("Queue is FULL. Insertion is not possible.\n");
-        }
-        else if(rear==-1 && front==-1)
-        {
-        printf("Enter the item to be inserted: ");
-        scanf("%d", &item);
+int i,n,ch,front=-1,rear=-1,q[100],item;
+void enqueue(){
+    if(front==(rear+1)%n){
+        printf("Overflow");
+    }else if(rear==-1 && front==-1){
+        printf("enter the element to add ");
+        scanf("%d",&item);
         front=0;
         rear=0;
-        A[rear]=item;
-        }
-        else{
-        printf("Enter the item to be inserted: ");
-        scanf("%d", &item);
-	rear=(rear+1)%n;
-        A[rear]=item;
-        }
-}
-void DEQUEUE(){
-        if(front==-1){
-        printf("Queue is EMPTY\n");
-        }
-        else if(front==rear)
-        {
-        printf("Deleted item is %d",A[front]);
-        front=-1;
-        rear=-1;
-        }
-        else{
-        printf("Deleted item is %d",A[front]);
+        q[rear]=item;
+    }else{
+        printf("enter the element to add ");
+        scanf("%d",&item);
+        rear= (rear+1)%n;
+        q[rear]=item;
+    }}
+void dequeue(){
+    if(front==-1){
+        printf("underflow error");
+    }else if(front==rear){
+    printf("the deleted element is %d",q[front]);
+    front=-1;
+    rear=-1;
+    }else{
+        printf("the deleted element is %d",q[front]);
         front=(front+1)%n;
-        }
-        }
-void DISPLAY(){
-        if(front==-1){
-            printf("Queue is EMPTY\n");
-        }
-        else{
-        printf("The entered queue is\n");
-        for(i=front;i<=rear;i++){
-        printf("%d\t", A[i]);
-        }
-        printf("\n");
-        }
-}
-void main()
-{
-int item,opt;
-printf("Enter the size of the queue: ");
-scanf("%d", &n);
-do
-{
-printf("\nEnter the option: \n");
-printf("1.ENQUEUE \n2.DEQUEUE \n3.DISPLAY \n4.EXIT\n");
-scanf("%d", &opt);
-    switch(opt){
-            case 1: ENQUEUE();
-                     break;
-            case 2: DEQUEUE();
-                    break;
-            case 3: DISPLAY();
-                    break;
-            case 4: break;
-            default: printf("Invalid option...");
-}
-}while(opt!=4);
-}
+    }}
+void display(){
+    if(front==-1 && rear==-1){
+        printf("The list is empty");
+    }else{
+        /*additional true condition added to for loop*/
+        for(i=front;1;i=(i+1)%n) { /*circ queue incrementing*/
+            printf("%d\t",q[i]);
+        if(i==rear) /*to stop at rear*/
+        break;
+        }}}
+int main(){
+    printf("Enter the no of elements");
+    scanf("%d",&n);
+    while(ch!=4){
+    printf("\nChoose operation\n1.enqueue\t2.dequeue\t3.display\t4.exit");
+    scanf("%d",&ch);
+    switch(ch){
+        case 1: enqueue(); break;
+        case 2: dequeue(); break;
+        case 3: display(); break;
+        case 4: printf("Exiting...."); break;
+    }}}
